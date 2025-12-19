@@ -44,12 +44,7 @@ export const scanQR = async (req, res) => {
     if (meetingResult.rows.length === 0) {
       return res.status(404).json({ message: 'Meeting not found' });
     }
-    //  Bloquear si la reunión está cerrada
-    if (!meetingResult.rows[0].is_active) {
-     return res.status(400).json({
-        message: 'Meeting is closed'
-        });
-    }
+    
 
     const startTime = new Date(meetingResult.rows[0].start_time);
     const now = new Date();
